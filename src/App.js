@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {apiKey} from './config'
+import api from './utils/api.js'
+import Gallery from './components/Gallery'
 
 function App() {
+  const [token, setToken] = useState(null)
+
+  function getToken() {
+    api.post('auth', {apiKey}).then(res => setToken(res?.data?.token))
+  }
+
+  useEffect(() => {
+    getToken()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Gallery token={token} getToken={getToken}/>
   );
 }
 
