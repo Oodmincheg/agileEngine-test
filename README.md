@@ -1,6 +1,8 @@
-##Notes for reviewers
+## Notes for reviewers
+
     InfiniteScroll isn't finished. It works only if there is scroll on window.
     Next & prev images isn't implemented
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
